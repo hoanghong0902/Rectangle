@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1000px" height="600px" style="border:1px solid #d3d3d3;"></canvas>
+    <script>
+        let Rectangle = function(width, height){
+            this.width = width;
+            this.height = height;
+            this.getWidth = function(){
+                return width;
+            }
+            this.getHeight = function(){
+                return height;
+            }
+            this.getPerimeter = function(){
+                return 2 * (width + height);
+            }
+            this.getArea = function(){
+                return width * height;  
+            }
+        }
+        function createRectangle(){
+            var ctx = document.getElementById('myCanvas').getContext("2d");
+            let x = cmToPixel(height);
+            let y = cmToPixel(width);
+            ctx.fillStyle = 'black';
+            ctx.fillRect(10,20,x,y);
+            ctx.clearRect(13,23,x-6,y-6);
+            ctx.fill;
+        }
+        function cmToPixel(cm){
+            return cm * 38;
+        }
+        var rectangle = new Rectangle(5,10);
+        var height = rectangle.getHeight();
+        var width = rectangle.getWidth();
+        var perimeter = rectangle.getPerimeter();
+        var area = rectangle.getArea();
+        document.write('<br> Rectangle height = ' + height + 'cm ; width = ' + width + 'cm');
+        document.write('<br> Area = ' + area + ';  Perimeter = ' + perimeter);
+        createRectangle();
+    </script>
+</body>
+</html>
